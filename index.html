@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>看護スマイル - Notion ウィジェット</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="assets/logo.png" alt="看護スマイル" id="logo-img">
+                <h1>看護スマイル</h1>
+            </div>
+            <p class="tagline">看護師国家試験対策ノート用のNotion ウィジェット</p>
+        </header>
+
+        <main>
+            <section class="intro">
+                <h2>ウィジェットについて</h2>
+                <p>これらのウィジェットは、Notionページで使用するために特別に設計されています。以下のウィジェットをあなたのNotionページに埋め込んで、学習体験を向上させましょう！</p>
+            </section>
+
+            <section class="widgets">
+                <h2>利用可能なウィジェット</h2>
+                
+                <div class="widget-card">
+                    <div class="widget-preview">
+                        <iframe src="widgets/progress-bar/index.html" frameborder="0"></iframe>
+                    </div>
+                    <div class="widget-info">
+                        <h3>プログレスバー</h3>
+                        <p>あなたの学習進捗状況を視覚的に表示します。</p>
+                        <div class="widget-params">
+                            <h4>カスタマイズパラメータ:</h4>
+                            <ul>
+                                <li><code>percentage</code>: 進捗率（例: 50）</li>
+                                <li><code>title</code>: タイトル（例: 学習進捗状況）</li>
+                                <li><code>message</code>: メッセージ（例: 頑張れば、きっと合格できる！）</li>
+                                <li><code>emoji</code>: 絵文字（例: 📚）</li>
+                            </ul>
+                        </div>
+                        <button class="copy-btn" data-widget="progress-bar">埋め込みコードをコピー</button>
+                    </div>
+                </div>
+                
+                <div class="widget-card">
+                    <div class="widget-preview">
+                        <iframe src="widgets/flashcard/index.html" frameborder="0"></iframe>
+                    </div>
+                    <div class="widget-info">
+                        <h3>フラッシュカード</h3>
+                        <p>学習内容を効率的に覚えるためのインタラクティブなフラッシュカード。</p>
+                        <div class="widget-params">
+                            <h4>カスタマイズパラメータ:</h4>
+                            <ul>
+                                <li><code>term</code>: 用語（例: 心不全）</li>
+                                <li><code>pronunciation</code>: 読み方（例: しんふぜん）</li>
+                                <li><code>category</code>: カテゴリー（例: 循環器疾患）</li>
+                                <li><code>emoji</code>: カテゴリー絵文字（例: 🫀）</li>
+                                <li><code>definition</code>: 定義</li>
+                                <li><code>symptoms</code>: 症状</li>
+                                <li><code>keywords</code>: キーワード</li>
+                                <li><code>memoryTip</code>: 覚え方のコツ</li>
+                            </ul>
+                        </div>
+                        <button class="copy-btn" data-widget="flashcard">埋め込みコードをコピー</button>
+                    </div>
+                </div>
+                
+                <div class="widget-card">
+                    <div class="widget-preview">
+                        <iframe src="widgets/countdown/index.html" frameborder="0"></iframe>
+                    </div>
+                    <div class="widget-info">
+                        <h3>カウントダウンタイマー</h3>
+                        <p>試験までの残り日数をカウントダウンします。</p>
+                        <div class="widget-params">
+                            <h4>カスタマイズパラメータ:</h4>
+                            <ul>
+                                <li><code>title</code>: タイトル（例: 第114回看護師国家試験まで）</li>
+                                <li><code>examDate</code>: 試験日（YYYY-MM-DD形式、例: 2026-02-15）</li>
+                                <li><code>message</code>: メッセージ</li>
+                                <li><code>emoji</code>: 絵文字（例: ⏱️）</li>
+                            </ul>
+                        </div>
+                        <button class="copy-btn" data-widget="countdown">埋め込みコードをコピー</button>
+                    </div>
+                </div>
+                
+                <div class="widget-card">
+                    <div class="widget-preview">
+                        <iframe src="widgets/motivation/index.html" frameborder="0"></iframe>
+                    </div>
+                    <div class="widget-info">
+                        <h3>モチベーションコーナー</h3>
+                        <p>励ましのメッセージや名言、先輩ナースからのアドバイスを表示します。</p>
+                        <div class="widget-params">
+                            <h4>カスタマイズパラメータ:</h4>
+                            <ul>
+                                <li><code>title</code>: タイトル（例: モチベーションコーナー）</li>
+                                <li><code>emoji</code>: 絵文字（例: 💪）</li>
+                                <li><code>message</code>: 看護ちゃんからのメッセージ</li>
+                                <li><code>quote</code>: 名言テキスト</li>
+                                <li><code>quoteAuthor</code>: 名言の著者</li>
+                                <li><code>advice</code>: 先輩ナースのアドバイス</li>
+                                <li><code>adviceAuthor</code>: 先輩ナースの名前と合格回</li>
+                            </ul>
+                        </div>
+                        <button class="copy-btn" data-widget="motivation">埋め込みコードをコピー</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="usage">
+                <h2>使い方</h2>
+                <ol>
+                    <li>使用したいウィジェットの「埋め込みコードをコピー」ボタンをクリックします。</li>
+                    <li>Notionページで、「/embed」と入力し、「Embed」ブロックを選択します。</li>
+                    <li>「Embed link」フィールドにコピーしたURLを貼り付けます。</li>
+                    <li>パラメータをカスタマイズするには、URLの末尾に「?パラメータ名=値」の形式で追加します。複数のパラメータを設定する場合は「&」で繋ぎます。</li>
+                </ol>
+                <div class="example">
+                    <h4>例:</h4>
+                    <code>https://hybirdss.github.io/Nursing_Smile/widgets/progress-bar/index.html?percentage=75&title=基礎看護学&emoji=📝</code>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 看護スマイル - 看護師国家試験対策ノート用ウィジェット</p>
+            <p class="credits">デザイン・開発: <a href="https://github.com/Hybirdss" target="_blank">Hybirdss</a></p>
+        </footer>
+    </div>
+
+    <div class="copy-modal" id="copyModal">
+        <div class="modal-content">
+            <h3>埋め込みコード</h3>
+            <p>以下のURLをNotionの「Embed」ブロックに貼り付けてください：</p>
+            <div class="copy-url-container">
+                <input type="text" id="copyUrlInput" readonly>
+                <button id="copyUrlBtn">コピー</button>
+            </div>
+            <p class="modal-tip">💡 カスタマイズするには、URLにパラメータを追加してください (例: ?parameter=value)</p>
+            <button class="close-btn" id="closeModalBtn">閉じる</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

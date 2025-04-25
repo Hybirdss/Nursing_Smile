@@ -1,0 +1,222 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.flashcard-container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.flashcard {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    perspective: 1500px;
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+}
+
+.flashcard.flipped .flashcard-front {
+    transform: rotateY(-180deg);
+}
+
+.flashcard.flipped .flashcard-back {
+    transform: rotateY(0deg);
+}
+
+.flashcard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.flashcard-tag {
+    background-color: #FFAEC9;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.flashcard-emoji {
+    font-size: 24px;
+}
+
+.flashcard-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.flashcard-front .flashcard-content {
+    gap: 12px;
+}
+
+.flashcard-back .flashcard-content {
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+    overflow-y: auto;
+}
+
+.flashcard-title {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.flashcard-pronunciation {
+    font-size: 20px;
+    color: #666;
+}
+
+.flashcard-back h4 {
+    font-size: 16px;
+    color: #FFAEC9;
+    margin-bottom: 4px;
+}
+
+.flashcard-back p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.flashcard-memory-tip {
+    background-color: #FFF5F8;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    width: 100%;
+}
+
+.tip-emoji {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.flashcard-memory-tip p {
+    font-size: 14px;
+    color: #FF6F61;
+    margin: 0;
+}
+
+.flashcard-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.flashcard-flip-btn {
+    background-color: #FFAEC9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.flashcard-flip-btn:hover {
+    background-color: #FF6F61;
+    transform: translateY(-2px);
+}
+
+.flashcard-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-btn {
+    background-color: white;
+    border: 2px solid #F0F0F0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+#hard-btn:hover {
+    background-color: #FFCDD2;
+    border-color: #FFCDD2;
+}
+
+#medium-btn:hover {
+    background-color: #BBDEFB;
+    border-color: #BBDEFB;
+}
+
+#easy-btn:hover {
+    background-color: #C8E6C9;
+    border-color: #C8E6C9;
+}
+
+#perfect-btn:hover {
+    background-color: #FFECB3;
+    border-color: #FFECB3;
+}
+
+@media (max-width: 480px) {
+    .flashcard-container {
+        max-width: 300px;
+    }
+    
+    .flashcard {
+        height: 350px;
+    }
+    
+    .flashcard-title {
+        font-size: 28px;
+    }
+    
+    .flashcard-nav {
+        flex-wrap: wrap;
+    }
+    
+    .nav-btn {
+        flex: 1;
+        min-width: 70px;
+        font-size: 12px;
+    }
+}

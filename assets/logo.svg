@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="56" fill="#FFAEC9" stroke="#FFF" stroke-width="3"/>
+    <text x="60" y="48" font-family="Arial" font-size="22" fill="#FFF" text-anchor="middle" font-weight="bold">看護</text>
+    <text x="60" y="80" font-family="Arial" font-size="22" fill="#FFF" text-anchor="middle" font-weight="bold">スマイル</text>
+</svg>
