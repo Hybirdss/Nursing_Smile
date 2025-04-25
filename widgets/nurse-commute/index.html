@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>看護スマイル - 東京通勤ナース</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="commute-container">
+        <div class="commute-header">
+            <h3 class="commute-title">東京通勤ナース</h3>
+            <div class="commute-time">
+                <span id="current-time">07:30</span>
+                <span class="time-label">現在の時間</span>
+            </div>
+        </div>
+        
+        <div class="scene-container">
+            <div class="scene" id="scene">
+                <!-- 배경 요소 -->
+                <div class="background" id="background">
+                    <div class="scene-background morning-bg" id="scene-background"></div>
+                </div>
+                
+                <!-- 간호사 캐릭터 -->
+                <div class="nurse" id="nurse">
+                    <img src="../../assets/Nurse.PNG" alt="간호사" id="nurse-image">
+                </div>
+                
+                <!-- 시간대별 오브젝트 (전철, 병원 등) -->
+                <div class="objects" id="objects">
+                    <div class="train" id="train">
+                        <div class="train-body"></div>
+                        <div class="train-window"></div>
+                        <div class="train-window"></div>
+                        <div class="train-window"></div>
+                        <div class="train-door"></div>
+                        <div class="train-wheel"></div>
+                        <div class="train-wheel"></div>
+                    </div>
+                    <div class="hospital" id="hospital">
+                        <div class="hospital-body"></div>
+                        <div class="hospital-symbol">🏥</div>
+                        <div class="hospital-entrance"></div>
+                    </div>
+                    <div class="home" id="home">
+                        <div class="home-body"></div>
+                        <div class="home-roof"></div>
+                        <div class="home-door"></div>
+                        <div class="home-window"></div>
+                    </div>
+                    <div class="station" id="station">
+                        <div class="station-body"></div>
+                        <div class="station-symbol">🚉</div>
+                        <div class="station-entrance"></div>
+                    </div>
+                </div>
+                
+                <!-- 말풍선 -->
+                <div class="speech-bubble" id="speech-bubble">
+                    <p id="speech-text">おはようございます！今日も頑張ります！</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scene-controls">
+            <button class="time-btn" data-time="morning">朝の通勤</button>
+            <button class="time-btn" data-time="day">日中の勤務</button>
+            <button class="time-btn" data-time="evening">夕方の帰宅</button>
+            <button class="time-btn" data-time="night">夜勤</button>
+        </div>
+        
+        <div class="fun-facts">
+            <h4 class="facts-title">看護師雑学</h4>
+            <div class="fact-container" id="fun-fact">
+                <p class="fact-text">日本の看護師国家試験の合格率は約90%で、毎年約6万人が受験しています。頑張れば、あなたも合格できます！</p>
+                <button class="next-fact-btn" id="next-fact-btn">次の雑学</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

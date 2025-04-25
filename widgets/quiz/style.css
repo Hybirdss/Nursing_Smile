@@ -1,0 +1,370 @@
+/* 전체 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+}
+
+/* 퀴즈 컨테이너 */
+.quiz-container {
+    width: 100%;
+    max-width: 700px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    padding: 25px;
+}
+
+/* 퀴즈 헤더 */
+.quiz-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.quiz-title {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.quiz-title::before {
+    content: '📝';
+    margin-right: 12px;
+    font-size: 1.8rem;
+}
+
+.quiz-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quiz-category {
+    background-color: #FFAEC9;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.difficulty-level {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 진행 상황 바 */
+.quiz-progress {
+    margin-bottom: 20px;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 20%; /* 초기값 */
+    background-color: #AEDEE0;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+/* 문제 컨테이너 */
+.quiz-content {
+    margin-bottom: 25px;
+}
+
+.question-container {
+    background-color: #f8f8f8;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.question-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* 캐릭터 영역 */
+.character-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.nurse-character {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+.nurse-character img {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.speech-bubble {
+    position: relative;
+    background-color: white;
+    border: 2px solid #FFAEC9;
+    border-radius: 15px;
+    padding: 10px 15px;
+    margin-left: 10px;
+    max-width: 200px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    bottom: 15px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 10px solid #FFAEC9;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: -7px;
+    bottom: 15px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 10px solid white;
+}
+
+/* 선택지 영역 */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    border: 2px solid #e0e0e0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option:hover {
+    transform: translateX(5px);
+    background-color: #f0f0f0;
+    border-color: #d0d0d0;
+}
+
+.option.selected {
+    border-color: #AEDEE0;
+    background-color: #f0f8f8;
+}
+
+.option.correct {
+    border-color: #98FB98;
+    background-color: #f0fff0;
+}
+
+.option.incorrect {
+    border-color: #FFA07A;
+    background-color: #fff0f0;
+}
+
+.option-letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #AEDEE0;
+    color: white;
+    font-weight: bold;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.option-text {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+/* 해설 영역 */
+.explanation-container {
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    border-left: 4px solid #AEDEE0;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.explanation-title {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.explanation-title::before {
+    content: '💭';
+    margin-right: 8px;
+}
+
+.explanation-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.memory-tip {
+    background-color: #FFECF2;
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.tip-icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.tip-text {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* 퀴즈 푸터 */
+.quiz-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quiz-btn {
+    background-color: #FFAEC9;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quiz-btn:hover {
+    background-color: #ff8bb0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 174, 201, 0.3);
+}
+
+.quiz-stats {
+    display: flex;
+    gap: 15px;
+}
+
+.stats-item {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.correct-answer-animation {
+    animation: pulse 0.6s ease;
+}
+
+.incorrect-answer-animation {
+    animation: shake 0.4s ease;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 700px) {
+    .quiz-container {
+        border-radius: 15px;
+        padding: 20px;
+    }
+    
+    .question-text {
+        font-size: 1rem;
+    }
+    
+    .option {
+        padding: 12px;
+    }
+    
+    .quiz-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .quiz-btn {
+        width: 100%;
+    }
+    
+    .quiz-stats {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

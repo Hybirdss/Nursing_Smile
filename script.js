@@ -93,6 +93,113 @@ document.addEventListener('DOMContentLoaded', function() {
             preview.style.transform = 'scale(1)';
         });
     });
+    
+    // Widget Preview Loading Animation
+    document.querySelectorAll('.widget-preview iframe').forEach(iframe => {
+        // Add loading overlay to each iframe
+        const loadingOverlay = document.createElement('div');
+        loadingOverlay.className = 'loading-overlay';
+        loadingOverlay.innerHTML = '<div class="loader"></div>';
+        iframe.parentNode.appendChild(loadingOverlay);
+        
+        // Remove overlay when iframe loads
+        iframe.addEventListener('load', function() {
+            loadingOverlay.style.opacity = '0';
+            setTimeout(() => {
+                loadingOverlay.remove();
+            }, 500);
+        });
+        
+        // If iframe takes too long to load, remove overlay anyway
+        setTimeout(() => {
+            if (document.body.contains(loadingOverlay)) {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    loadingOverlay.remove();
+                }, 500);
+            }
+        }, 5000);
+    });
+    
+    // Random Fun Facts for widgets
+    const funFacts = [
+        '看護師国家試験の合格率は約90%です！',
+        'フローレンス・ナイチンゲールは近代看護教育の創始者として知られています。',
+        '看護師の日（5月12日）はナイチンゲールの誕生日です。',
+        '日本の看護師資格は世界40ヶ国以上で通用します！',
+        '看護師国家試験の問題数は合計240問！持久力も必要です！',
+        '循環器疾患は看護師国家試験でよく出題される分野の一つです。'
+    ];
+    
+    // Randomly display a fun fact on page load
+    const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+    const funFactElement = document.createElement('div');
+    funFactElement.className = 'fun-fact-popup';
+    funFactElement.innerHTML = `
+        <div class="fun-fact-content">
+            <span class="fun-fact-icon">💡</span>
+            <p>${randomFact}</p>
+            <button class="fun-fact-close">×</button>
+        </div>
+    `;
+    
+    // Add fun fact after a delay
+    setTimeout(() => {
+        document.body.appendChild(funFactElement);
+        
+        // Fade in
+        setTimeout(() => {
+            funFactElement.style.opacity = '1';
+        }, 100);
+        
+        // Add close button functionality
+        funFactElement.querySelector('.fun-fact-close').addEventListener('click', () => {
+            funFactElement.style.opacity = '0';
+            setTimeout(() => {
+                funFactElement.remove();
+            }, 500);
+        });
+        
+        // Auto close after 8 seconds
+        setTimeout(() => {
+            if (document.body.contains(funFactElement)) {
+                funFactElement.style.opacity = '0';
+                setTimeout(() => {
+                    funFactElement.remove();
+                }, 500);
+            }
+        }, 8000);
+    }, 3000);
+    
+    // Add example parameter functionality to help users
+    document.querySelectorAll('.widget-params code').forEach(code => {
+        code.style.cursor = 'pointer';
+        code.title = 'クリックしてURLに追加';
+        
+        code.addEventListener('click', function() {
+            const param = this.textContent;
+            const parent = this.closest('.widget-info');
+            const embedBtn = parent.querySelector('.copy-btn');
+            const widgetType = embedBtn.getAttribute('data-widget');
+            
+            // Get sample value from the text next to the code
+            let sampleValue = this.parentNode.textContent.split('例: ')[1];
+            if (sampleValue) {
+                sampleValue = sampleValue.split(')')[0].trim();
+            } else {
+                sampleValue = 'sample';
+            }
+            
+            const embedUrl = `${baseUrl}widgets/${widgetType}/index.html?${param.replace(':', '')}=${encodeURIComponent(sampleValue)}`;
+            
+            // Show modal with the URL
+            copyUrlInput.value = embedUrl;
+            copyModal.style.display = 'flex';
+            
+            // Select the URL in the input
+            copyUrlInput.select();
+        });
+    });
 });
 
 // Function to create a logo placeholder SVG

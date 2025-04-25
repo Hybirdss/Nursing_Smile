@@ -1,0 +1,282 @@
+/* 전체 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+}
+
+/* 캘린더 컨테이너 */
+.calendar-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* 캘린더 헤더 */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed #FFAEC9;
+}
+
+.month-title {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.month-nav {
+    background-color: #FFAEC9;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.month-nav:hover {
+    transform: scale(1.1);
+    background-color: #ff8bb0;
+}
+
+/* 요일 표시 */
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.weekdays div {
+    padding: 10px;
+    color: #666;
+}
+
+.weekdays div:first-child,
+.weekdays div:last-child {
+    color: #FFAEC9;
+}
+
+/* 날짜 그리드 */
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.day {
+    height: 60px;
+    border-radius: 10px;
+    padding: 5px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.day:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.day.today {
+    border: 2px solid #FFAEC9;
+    font-weight: bold;
+}
+
+.day.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #FFAEC9;
+}
+
+.day-number {
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.day-subjects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+.day-subject {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+/* 캘린더 범례 */
+.calendar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+/* 오늘의 학습 일정 */
+.study-today {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.study-today h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+.study-today h4::before {
+    content: '📆';
+    margin-right: 8px;
+}
+
+.today-schedule {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.schedule-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.schedule-time {
+    width: 110px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.schedule-subject {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* 일정 푸터 */
+.schedule-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.add-btn {
+    background-color: #AEDEE0;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.add-btn:hover {
+    transform: scale(1.05);
+    background-color: #8fcfd1;
+}
+
+.schedule-tips {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.tip-icon {
+    margin-right: 5px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 600px) {
+    .calendar-container {
+        border-radius: 0;
+        box-shadow: none;
+        padding: 10px;
+    }
+    
+    .days {
+        gap: 2px;
+    }
+    
+    .day {
+        height: 50px;
+        padding: 3px;
+    }
+    
+    .schedule-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .schedule-time {
+        margin-bottom: 5px;
+    }
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.schedule-item {
+    animation: fadeIn 0.5s ease-out;
+}

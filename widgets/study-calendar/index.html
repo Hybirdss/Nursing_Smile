@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>看護スマイル - 学習カレンダー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <button id="prev-month" class="month-nav">←</button>
+            <h3 id="month-year" class="month-title">2025年 4月</h3>
+            <button id="next-month" class="month-nav">→</button>
+        </div>
+        
+        <div class="weekdays">
+            <div>日</div>
+            <div>月</div>
+            <div>火</div>
+            <div>水</div>
+            <div>木</div>
+            <div>金</div>
+            <div>土</div>
+        </div>
+        
+        <div id="calendar-days" class="days">
+            <!-- JavaScript で日付を生成 -->
+        </div>
+        
+        <div class="calendar-legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #FFAEC9;"></div>
+                <div class="legend-label">基礎看護学</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #AEDEE0;"></div>
+                <div class="legend-label">成人看護学</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #D8BFD8;"></div>
+                <div class="legend-label">小児看護学</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #FFFACD;"></div>
+                <div class="legend-label">老年看護学</div>
+            </div>
+        </div>
+        
+        <div class="study-today">
+            <h4>今日の学習予定</h4>
+            <div id="today-schedule" class="today-schedule">
+                <div class="schedule-item">
+                    <span class="schedule-time">09:00-10:30</span>
+                    <span class="schedule-subject" style="background-color: #FFAEC9;">基礎看護学の復習</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">13:00-14:30</span>
+                    <span class="schedule-subject" style="background-color: #AEDEE0;">成人看護学の問題演習</span>
+                </div>
+                <div class="schedule-item">
+                    <span class="schedule-time">19:00-20:00</span>
+                    <span class="schedule-subject" style="background-color: #D8BFD8;">小児看護学の暗記</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="schedule-footer">
+            <button id="add-schedule" class="add-btn">+ 予定を追加</button>
+            <div class="schedule-tips">
+                <span class="tip-icon">💡</span>
+                <span class="tip-text">毎日の学習計画を立てると、記憶の定着率がアップします！</span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

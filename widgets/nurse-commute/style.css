@@ -1,0 +1,494 @@
+/* 전체 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+}
+
+/* 컨테이너 */
+.commute-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* 헤더 */
+.commute-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed #FFAEC9;
+}
+
+.commute-title {
+    font-size: 1.4rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.commute-title::before {
+    content: '🚇';
+    margin-right: 10px;
+}
+
+.commute-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#current-time {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.time-label {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* 씬 컨테이너 */
+.scene-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #e6f7ff;
+}
+
+/* 배경 요소 */
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.scene-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    transition: background-image 1s ease;
+}
+
+/* 배경 이미지들 - 각 시간대별로 다른 배경 */
+.morning-bg {
+    background-image: url('../../assets/1.출근.png');
+}
+
+.day-bg {
+    background-image: url('../../assets/2.병원.png');
+}
+
+.afternoon-bg {
+    background-image: url('../../assets/3.오후.png');
+}
+
+.evening-bg {
+    background-image: url('../../assets/4.퇴근.png');
+}
+
+/* 다음 요소들은 배경 이미지에 포함되어 있으므로 숨김 */
+.sky, .buildings, .road, .ground {
+    display: none;
+}
+
+/* 애니메이션 키프레임 */
+@keyframes walk {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+
+/* 간호사 캐릭터 */
+.nurse {
+    position: absolute;
+    bottom: 0; /* 바닥으로 내리기 */
+    left: 20%;
+    width: 80px;
+    height: 120px;
+    z-index: 10;
+    transform-origin: bottom center;
+    animation: walk 0.6s infinite;
+    transition: left 1s ease, bottom 1s ease;
+}
+
+#nurse-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 오브젝트 */
+.objects {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+/* 기차 */
+.train {
+    position: absolute;
+    bottom: 30%;
+    left: -300px;
+    width: 200px;
+    height: 60px;
+    z-index: 6;
+    display: none;
+}
+
+.train-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #4682B4;
+    border-radius: 10px;
+}
+
+.train-window {
+    position: absolute;
+    top: 10px;
+    width: 20px;
+    height: 15px;
+    background-color: #E0FFFF;
+    border: 1px solid #add8e6;
+    border-radius: 3px;
+}
+
+.train-window:nth-child(2) {
+    left: 30px;
+}
+
+.train-window:nth-child(3) {
+    left: 70px;
+}
+
+.train-window:nth-child(4) {
+    left: 110px;
+}
+
+.train-door {
+    position: absolute;
+    bottom: 0;
+    left: 150px;
+    width: 30px;
+    height: 30px;
+    background-color: #3A6B9F;
+    border-radius: 3px;
+}
+
+.train-wheel {
+    position: absolute;
+    bottom: -8px;
+    width: 16px;
+    height: 16px;
+    background-color: #333;
+    border-radius: 50%;
+}
+
+.train-wheel:nth-child(6) {
+    left: 40px;
+}
+
+.train-wheel:nth-child(7) {
+    left: 140px;
+}
+
+/* 병원 */
+.hospital {
+    position: absolute;
+    bottom: 40%;
+    right: 50px;
+    width: 120px;
+    height: 120px;
+    z-index: 5;
+    display: none;
+}
+
+.hospital-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/Hospital.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+.hospital-symbol, .hospital-entrance {
+    display: none; /* 이미지가 포함되어 있으므로 숨김 */
+}
+
+/* 집 */
+.home {
+    position: absolute;
+    bottom: 40%;
+    right: 50px;
+    width: 120px;
+    height: 120px;
+    z-index: 5;
+    display: none;
+}
+
+.home-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/Home.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+.home-roof, .home-door, .home-window {
+    display: none; /* 이미지가 포함되어 있으므로 숨김 */
+}
+
+/* 역 */
+.station {
+    position: absolute;
+    bottom: 40%;
+    left: 50px;
+    width: 120px;
+    height: 80px;
+    z-index: 5;
+    display: none;
+}
+
+.station-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
+
+.station-symbol {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+}
+
+.station-entrance {
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    width: 40px;
+    height: 30px;
+    background-color: #ddd;
+    border-radius: 8px 8px 0 0;
+}
+
+/* 말풍선 - 왼쪽에 위치 (기본값) */
+.speech-bubble {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    background-color: white;
+    border: 2px solid #FFAEC9;
+    border-radius: 15px;
+    padding: 10px;
+    max-width: 200px;
+    z-index: 20;
+    animation: fadeIn 0.5s ease;
+    display: none;
+}
+
+/* 말풍선 꼬리 - 왼쪽에 위치할 때 (기본값) */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #FFAEC9;
+}
+
+/* 말풍선 - 오른쪽에 위치 */
+.speech-bubble.right-position {
+    left: auto;
+    right: 50px;
+}
+
+/* 말풍선 꼬리 - 오른쪽에 위치할 때 */
+.speech-bubble.right-position::after {
+    left: auto;
+    right: 20px;
+}
+
+#speech-text {
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0;
+}
+
+/* 컨트롤 버튼 */
+.scene-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.time-btn {
+    flex: 1;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.time-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.time-btn.active {
+    background-color: #FFAEC9;
+    color: white;
+    box-shadow: 0 2px 5px rgba(255, 174, 201, 0.3);
+}
+
+/* 간호사 지식 */
+.fun-facts {
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.facts-title {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.facts-title::before {
+    content: '💡';
+    margin-right: 8px;
+}
+
+.fact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fact-text {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.next-fact-btn {
+    align-self: flex-end;
+    background-color: #AEDEE0;
+    color: #333;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.next-fact-btn:hover {
+    background-color: #8fcfd1;
+    transform: translateY(-2px);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 600px) {
+    .commute-container {
+        border-radius: 15px;
+        padding: 15px;
+    }
+    
+    .scene-container {
+        height: 200px;
+    }
+    
+    .scene-controls {
+        flex-wrap: wrap;
+    }
+    
+    .time-btn {
+        flex: 1 0 calc(50% - 5px);
+        margin-bottom: 10px;
+    }
+    
+    .commute-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .commute-time {
+        align-self: flex-end;
+    }
+}

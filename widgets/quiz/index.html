@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>看護スマイル - 問題チャレンジ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h3 class="quiz-title">問題チャレンジ</h3>
+            <div class="quiz-info">
+                <span class="quiz-category">循環器疾患</span>
+                <span class="difficulty-level">難易度: 普通</span>
+            </div>
+        </div>
+        
+        <div class="quiz-progress">
+            <div class="progress-text">質問 <span id="current-question">1</span>/<span id="total-questions">5</span></div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="quiz-progress-bar"></div>
+            </div>
+        </div>
+        
+        <div class="quiz-content">
+            <div class="question-container">
+                <p class="question-text" id="question-text">心不全患者のアセスメントにおいて、以下のうち正しい観察項目はどれか？</p>
+                
+                <div class="character-container" id="character-container">
+                    <div class="nurse-character" id="nurse-character">
+                        <img src="../../assets/Nurse.PNG" alt="看護師キャラクター" id="nurse-image">
+                        <div class="speech-bubble" id="character-speech">
+                            がんばって考えてみよう！
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="options-container" id="options-container">
+                <div class="option" data-correct="false">
+                    <span class="option-letter">A</span>
+                    <span class="option-text">脈拍の増加と血圧の上昇</span>
+                </div>
+                <div class="option" data-correct="true">
+                    <span class="option-letter">B</span>
+                    <span class="option-text">頸静脈の怒張と下肢の浮腫</span>
+                </div>
+                <div class="option" data-correct="false">
+                    <span class="option-letter">C</span>
+                    <span class="option-text">体温の上昇と発汗の減少</span>
+                </div>
+                <div class="option" data-correct="false">
+                    <span class="option-letter">D</span>
+                    <span class="option-text">意識レベルの上昇と瞳孔散大</span>
+                </div>
+            </div>
+            
+            <div class="explanation-container" id="explanation-container" style="display: none;">
+                <h4 class="explanation-title">解説</h4>
+                <p class="explanation-text" id="explanation-text">
+                    心不全では、心臓のポンプ機能低下により、血液が心臓から十分に送り出せなくなります。その結果、静脈系にうっ血が生じ、頸静脈の怒張や下肢の浮腫などの症状が現れます。これらは心不全の重要な観察項目です。
+                </p>
+                <div class="memory-tip">
+                    <span class="tip-icon">💡</span>
+                    <p class="tip-text">覚え方：「心臓がポンプ機能を<strong>怠る</strong>と、血液が<strong>溜まって</strong>首の血管が膨らみ、足がむくむ」</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quiz-footer">
+            <button class="quiz-btn" id="next-btn">回答を確認</button>
+            <div class="quiz-stats">
+                <span class="stats-item">正解率: <span id="correct-rate">0%</span></span>
+                <span class="stats-item">残り時間: <span id="time-left">60</span>秒</span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

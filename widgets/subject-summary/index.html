@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>看護スマイル - 科目別サマリー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="summary-container">
+        <div class="summary-header">
+            <h3 class="summary-title">科目別サマリー</h3>
+            <select id="subject-selector" class="subject-selector">
+                <option value="circulation">循環器疾患</option>
+                <option value="respiratory">呼吸器疾患</option>
+                <option value="digestive">消化器疾患</option>
+                <option value="endocrine">内分泌代謝疾患</option>
+                <option value="psychiatric">精神疾患</option>
+            </select>
+        </div>
+        
+        <div class="subject-card" id="subject-card">
+            <div class="card-header">
+                <div class="subject-icon" id="subject-icon">🫀</div>
+                <div class="subject-info">
+                    <h4 class="subject-title" id="subject-title">循環器疾患</h4>
+                    <div class="subject-stats">
+                        <span class="stat-item">
+                            <span class="stat-label">出題率</span>
+                            <span class="stat-value" id="exam-rate">15%</span>
+                        </span>
+                        <span class="stat-item">
+                            <span class="stat-label">難易度</span>
+                            <div class="difficulty-stars" id="difficulty-stars">
+                                <span class="star active">★</span>
+                                <span class="star active">★</span>
+                                <span class="star active">★</span>
+                                <span class="star active">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-body">
+                <div class="key-concepts">
+                    <h5 class="section-title">重要概念</h5>
+                    <ul class="concept-list" id="concept-list">
+                        <li class="concept-item">
+                            <span class="concept-name">心不全</span>
+                            <span class="concept-importance high">必須</span>
+                        </li>
+                        <li class="concept-item">
+                            <span class="concept-name">心筋梗塞</span>
+                            <span class="concept-importance high">必須</span>
+                        </li>
+                        <li class="concept-item">
+                            <span class="concept-name">狭心症</span>
+                            <span class="concept-importance medium">重要</span>
+                        </li>
+                        <li class="concept-item">
+                            <span class="concept-name">不整脈</span>
+                            <span class="concept-importance medium">重要</span>
+                        </li>
+                        <li class="concept-item">
+                            <span class="concept-name">高血圧</span>
+                            <span class="concept-importance low">一般</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="subject-diagram">
+                    <h5 class="section-title">関連図</h5>
+                    <div class="diagram-container" id="diagram-container">
+                        <div class="diagram-node main-node">循環器疾患</div>
+                        <div class="diagram-line line-1"></div>
+                        <div class="diagram-line line-2"></div>
+                        <div class="diagram-line line-3"></div>
+                        <div class="diagram-line line-4"></div>
+                        <div class="diagram-node sub-node node-1">心臓疾患</div>
+                        <div class="diagram-node sub-node node-2">血管疾患</div>
+                        <div class="diagram-node sub-node node-3">先天性疾患</div>
+                        <div class="diagram-node sub-node node-4">後天性疾患</div>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <h5 class="section-title">押さえるポイント</h5>
+                    <div class="points-container" id="key-points">
+                        <p class="point-item">心機能の低下は「前負荷」と「後負荷」の概念で理解する</p>
+                        <p class="point-item">急性心不全と慢性心不全の症状の違いを比較して覚える</p>
+                        <p class="point-item">心電図の基本波形（P波、QRS群、T波）の意味を理解する</p>
+                    </div>
+                </div>
+                
+                <div class="memory-tips">
+                    <h5 class="section-title">覚え方のコツ</h5>
+                    <div class="tips-container" id="memory-tips">
+                        <div class="tip-item">
+                            <span class="tip-icon">💡</span>
+                            <p class="tip-text">「心不全」は「心臓が<strong>不参加</strong>で試験に<strong>全滅</strong>」と覚える(しん-ふ-ぜん)</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-icon">💡</span>
+                            <p class="tip-text">「狭心症」は胸が<strong>狭く</strong>なって<strong>心</strong>が痛い(きょう-しん-しょう)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <div class="mastery-level">
+                    <span class="mastery-label">習熟度</span>
+                    <div class="mastery-bar-container">
+                        <div class="mastery-bar" id="mastery-bar" style="width: 65%;"></div>
+                    </div>
+                    <span class="mastery-percentage" id="mastery-percentage">65%</span>
+                </div>
+                <button class="study-btn" id="study-btn">この科目を学習する</button>
+            </div>
+        </div>
+        
+        <div class="related-subjects">
+            <h5 class="section-title">関連科目</h5>
+            <div class="related-tags" id="related-tags">
+                <span class="related-tag">基礎看護学</span>
+                <span class="related-tag">薬理学</span>
+                <span class="related-tag">病態生理学</span>
+                <span class="related-tag">成人看護学</span>
+            </div>
+        </div>
+        
+        <div class="performance-stats">
+            <h5 class="section-title">あなたの成績</h5>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-value" id="correct-rate">75%</div>
+                    <div class="stat-desc">正解率</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="study-time">3.5h</div>
+                    <div class="stat-desc">学習時間</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="last-studied">昨日</div>
+                    <div class="stat-desc">最終学習</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="solved-problems">42問</div>
+                    <div class="stat-desc">解いた問題数</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
